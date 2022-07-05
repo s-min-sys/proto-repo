@@ -1,0 +1,263 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "user.proto",
+    "version": "version not set"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {},
+  "definitions": {
+    "apiAdminProfileResponse": {
+      "type": "object",
+      "properties": {
+        "info": {
+          "$ref": "#/definitions/apiAdminUserInfo"
+        }
+      }
+    },
+    "apiAdminUserInfo": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "nick_name": {
+          "type": "string"
+        },
+        "avatar": {
+          "type": "string"
+        },
+        "enabled_ga": {
+          "type": "boolean"
+        }
+      }
+    },
+    "apiGetCsrfTokenResponse": {
+      "type": "object",
+      "properties": {
+        "csrf_token": {
+          "type": "string"
+        }
+      }
+    },
+    "apiGetDetailInfoResponse": {
+      "type": "object",
+      "properties": {
+        "info": {
+          "$ref": "#/definitions/apiUserDetailInfo"
+        }
+      }
+    },
+    "apiGetUserListResponse": {
+      "type": "object",
+      "properties": {
+        "cnt": {
+          "type": "string",
+          "format": "int64"
+        },
+        "users": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiUserListItem"
+          }
+        }
+      }
+    },
+    "apiGoogleAuthFlag": {
+      "type": "string",
+      "enum": [
+        "GOOGLE_AUTH_FLAG_UNSPECIFIED",
+        "GOOGLE_AUTH_FLAG_ENABLED",
+        "GOOGLE_AUTH_FLAG_FORCE_ENABLED",
+        "GOOGLE_AUTH_FLAG_DISABLED"
+      ],
+      "default": "GOOGLE_AUTH_FLAG_UNSPECIFIED"
+    },
+    "apiGoogleAuthGetSetupInfoResponse": {
+      "type": "object",
+      "properties": {
+        "secret_key": {
+          "type": "string"
+        }
+      }
+    },
+    "apiGoogleAuthVerifyResponse": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string"
+        }
+      }
+    },
+    "apiManagerUserResetPasswordRequest": {
+      "type": "object",
+      "properties": {
+        "new_password": {
+          "type": "string"
+        }
+      }
+    },
+    "apiManagerUserType": {
+      "type": "string",
+      "enum": [
+        "MANAGER_USER_TYPE_UNSPECIFIED",
+        "MANAGER_USER_TYPE_DELETE",
+        "MANAGER_USER_TYPE_SET_ADMIN_PRIVILEGES",
+        "MANAGER_USER_TYPE_UNSET_ADMIN_PRIVILEGES",
+        "MANAGER_USER_TYPE_SWITCH_ADMIN_PRIVILEGES",
+        "MANAGER_USER_TYPE_RESET_PASSWORD"
+      ],
+      "default": "MANAGER_USER_TYPE_UNSPECIFIED"
+    },
+    "apiProfileResponse": {
+      "type": "object",
+      "properties": {
+        "info": {
+          "$ref": "#/definitions/apiUserInfo"
+        },
+        "sso_token": {
+          "type": "string"
+        }
+      }
+    },
+    "apiSignResponse": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string"
+        },
+        "info": {
+          "$ref": "#/definitions/apiUserInfo"
+        },
+        "sso_token": {
+          "type": "string"
+        }
+      }
+    },
+    "apiTriggerAuthPurpose": {
+      "type": "string",
+      "enum": [
+        "TRIGGER_AUTH_PURPOSE_UNSPECIFIED",
+        "TRIGGER_AUTH_PURPOSE_REGISTER",
+        "TRIGGER_AUTH_PURPOSE_LOGIN",
+        "TRIGGER_AUTH_PURPOSE_RESET_PASSWORD"
+      ],
+      "default": "TRIGGER_AUTH_PURPOSE_UNSPECIFIED"
+    },
+    "apiUserDetailInfo": {
+      "type": "object",
+      "properties": {
+        "base_info": {
+          "$ref": "#/definitions/apiUserInfo"
+        },
+        "create_at": {
+          "type": "string",
+          "format": "int64"
+        },
+        "user": {
+          "$ref": "#/definitions/apiUserId"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "wechat": {
+          "type": "string"
+        }
+      }
+    },
+    "apiUserId": {
+      "type": "object",
+      "properties": {
+        "user_name": {
+          "type": "string"
+        },
+        "user_ve": {
+          "type": "string"
+        }
+      }
+    },
+    "apiUserInfo": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "nick_name": {
+          "type": "string"
+        },
+        "avatar": {
+          "type": "string"
+        },
+        "enabled_ga": {
+          "type": "boolean"
+        },
+        "flag_ga": {
+          "$ref": "#/definitions/apiGoogleAuthFlag"
+        }
+      }
+    },
+    "apiUserListItem": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "$ref": "#/definitions/apiUserId"
+        },
+        "info": {
+          "$ref": "#/definitions/apiUserInfo"
+        },
+        "create_at": {
+          "type": "string"
+        },
+        "last_login_at": {
+          "type": "string"
+        },
+        "privileges": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "sharepbEmpty": {
+      "type": "object"
+    }
+  }
+}

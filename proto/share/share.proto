@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package sharepb;
+
+option go_package = "<domain>/<namespace>/protorepo-share-go;sharepb";
+
+message Empty {
+
+}
